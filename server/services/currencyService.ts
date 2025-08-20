@@ -1,5 +1,5 @@
 export interface ExchangeRates {
-  [currency: string]: number;
+  [currency: string]: number | string;
   lastUpdated: string;
 }
 
@@ -78,7 +78,7 @@ export class CurrencyService {
     const rates = await this.getExchangeRates(from.toUpperCase());
     const rate = rates[to.toUpperCase()];
     
-    if (!rate) {
+    if (!rate || typeof rate !== 'number') {
       throw new Error(`Exchange rate not found for ${to.toUpperCase()}`);
     }
 

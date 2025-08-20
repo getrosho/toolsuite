@@ -129,12 +129,12 @@
 @layer utilities {
   .ad-slot {
     min-height: 120px;
-    border: 2px dashed theme(colors.gray.300);
+    border: 2px dashed theme('colors.gray.300');
     @apply flex items-center justify-center text-gray-400 text-sm;
   }
   
   .dark .ad-slot {
-    border-color: theme(colors.gray.600);
+    border-color: theme('colors.gray.600');
     @apply text-gray-500;
   }
 }

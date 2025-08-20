@@ -125,9 +125,10 @@ export default function TitleCounter() {
                       
                       {/* Status Message */}
                       <div className={`flex items-center text-sm ${getTitleStatus().color}`}>
-                        {getTitleStatus().icon && (
-                          <getTitleStatus().icon className="w-4 h-4 mr-2" />
-                        )}
+                        {(() => {
+                          const IconComponent = getTitleStatus().icon;
+                          return IconComponent ? <IconComponent className="w-4 h-4 mr-2" /> : null;
+                        })()}
                         {getTitleMessage()}
                       </div>
                     </div>
@@ -182,9 +183,10 @@ export default function TitleCounter() {
                       
                       {/* Status Message */}
                       <div className={`flex items-center text-sm ${getDescriptionStatus().color}`}>
-                        {getDescriptionStatus().icon && (
-                          <getDescriptionStatus().icon className="w-4 h-4 mr-2" />
-                        )}
+                        {(() => {
+                          const IconComponent = getDescriptionStatus().icon;
+                          return IconComponent ? <IconComponent className="w-4 h-4 mr-2" /> : null;
+                        })()}
                         {getDescriptionMessage()}
                       </div>
                     </div>

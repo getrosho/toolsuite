@@ -7,7 +7,7 @@ import { ThemeProvider } from "@/components/ThemeProvider";
 import { Layout } from "@/components/Layout";
 import { useAnalytics } from "@/hooks/use-analytics";
 import { useEffect } from "react";
-import { initGA } from "./lib/analytics";
+import { initGA } from "@/lib/analytics";
 
 // Pages
 import Home from "@/pages/Home";

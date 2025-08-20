@@ -18,7 +18,7 @@ const upload = multer({
     if (file.mimetype === 'application/pdf' || file.mimetype.startsWith('image/')) {
       cb(null, true);
     } else {
-      cb(new Error('Invalid file type'), false);
+      cb(null, false);
     }
   },
 });
@@ -106,7 +106,9 @@ export async function registerRoutes(app: Express): Promise<Server> {
         },
         body: (() => {
           const formData = new FormData();
-          formData.append('image_file', req.file!.buffer, req.file!.originalname);
+          const fs = require('fs');
+          const blob = new Blob([fs.readFileSync(req.file!.path)], { type: req.file!.mimetype });
+          formData.append('image_file', blob, req.file!.originalname);
           formData.append('size', 'auto');
           return formData;
         })(),
