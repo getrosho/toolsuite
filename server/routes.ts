@@ -308,12 +308,30 @@ export async function registerRoutes(app: Express): Promise<Server> {
         });
       }
 
-      const mathService = require('./services/mathService').mathService;
-      const result = await mathService.calculate({
-        expression,
-        operation: operation || 'evaluate',
-        variable: variable || 'x'
-      });
+      let result;
+      
+      try {
+        // Try to use the full math service first
+        const { mathService } = await import('./services/mathService.js');
+        result = await mathService.calculate({
+          expression,
+          operation: operation || 'evaluate',
+          variable: variable || 'x'
+        });
+      } catch (mathError) {
+        console.log('Full math service unavailable, using basic service');
+        // Fallback to basic math service
+        const { basicMathService } = await import('./services/basicMathService.js');
+        const basicResult = basicMathService.parseAndCalculate(expression, operation || 'evaluate');
+        result = {
+          ...basicResult,
+          steps: [
+            ...basicResult.steps,
+            '',
+            'Note: Using basic math mode. For advanced calculus operations, please ensure the Python math service is running.'
+          ]
+        };
+      }
 
       await storage.incrementToolUsage('scientific-calculator');
       
@@ -345,11 +363,11 @@ export async function registerRoutes(app: Express): Promise<Server> {
   });
 
   // Download endpoint for processed files
-  app.get("/downloads/:filename", (req, res) => {
+  app.get("/downloads/:filename", async (req, res) => {
     try {
       const { filename } = req.params;
-      const fs = require('fs');
-      const path = require('path');
+      const fs = await import('fs');
+      const path = await import('path');
       
       // Sanitize filename to prevent directory traversal
       const safeFilename = filename.replace(/[^a-zA-Z0-9.-]/g, '');

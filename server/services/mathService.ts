@@ -23,7 +23,7 @@ interface MathHistory {
 }
 
 class MathService {
-  private pythonServiceUrl = 'http://localhost:8000';
+  private pythonServiceUrl = 'http://127.0.0.1:8000';
   private isServiceRunning = false;
 
   async checkService(): Promise<boolean> {
@@ -43,17 +43,17 @@ class MathService {
     }
 
     try {
-      const { spawn } = require('child_process');
+      const { spawn } = await import('child_process');
       const pythonProcess = spawn('python3', ['python_math_service.py'], {
         cwd: process.cwd(),
         stdio: ['pipe', 'pipe', 'pipe']
       });
 
-      pythonProcess.stdout.on('data', (data: Buffer) => {
+      pythonProcess.stdout?.on('data', (data: Buffer) => {
         console.log(`Python service: ${data.toString()}`);
       });
 
-      pythonProcess.stderr.on('data', (data: Buffer) => {
+      pythonProcess.stderr?.on('data', (data: Buffer) => {
         console.error(`Python service error: ${data.toString()}`);
       });
 
