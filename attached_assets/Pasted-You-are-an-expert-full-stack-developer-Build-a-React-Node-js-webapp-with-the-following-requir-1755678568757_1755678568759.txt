@@ -1,0 +1,72 @@
+You are an expert full-stack developer. Build a **React + Node.js webapp** with the following requirements:
+
+## 🔹 Project Overview
+- A multi-tool utility website with categorized tools in the navbar.  
+- Responsive, modern design with **light & dark mode support**.  
+- Use a **primary gradient color** that looks good on both black and white backgrounds (suggested: `linear-gradient(135deg, #6a11cb 0%, #2575fc 100%)`).  
+- Structure everything with **best SEO practices**:
+  - Title, meta description, keywords.  
+  - H1, H2, structured headings for each tool page.  
+  - Sitemap, robots.txt, schema markup (JSON-LD).  
+  - Fast loading (code splitting + lazy loading).  
+  - Add basic SEO-optimized content text for each tool page (e.g., “Use our free Word Counter tool to count words, characters, and sentences instantly online.”).  
+
+## 🔹 Navbar Categories & Tools
+### Text / File Utilities
+- PDF to Word Converter  
+- PDF Compressor  
+- Merge PDFs  
+- Word Counter  
+- Character Counter  
+- Remove Background from Image (API integration with remove.bg)  
+
+### Online Generators & Converters
+- QR Code Generator  
+- Instagram / TikTok / YouTube Thumbnail Downloader  
+- Currency Converter (live exchange rates API)  
+
+### SEO / Content Tools
+- Plagiarism Checker (API integration)  
+- Meta Tag Generator  
+- Title & Description Counter  
+
+(Add extra placeholders for future tools.)  
+
+## 🔹 Frontend (React + Tailwind)
+- Use **TailwindCSS** for styling.  
+- Create a modern **Navbar with categories** and dropdowns for tools.  
+- Each tool should have its own **dedicated page** with:
+  - Short SEO intro text.  
+  - Input form / upload section.  
+  - Tool result/output area.  
+- Add **dark/light mode toggle** with smooth animations.  
+- Include ad slot placeholders (`<div class="ad-slot"></div>`) for Google AdSense.  
+
+## 🔹 Backend (Node.js + Express)
+- Each tool should have its own API endpoint.  
+- Example:
+  - `/api/pdf-to-word` → converts PDF to Word.  
+  - `/api/compress-pdf` → compresses PDF.  
+  - `/api/merge-pdf` → merges uploaded PDFs.  
+  - `/api/remove-bg` → integrates with remove.bg API.  
+  - `/api/currency` → fetches live rates from currency API.  
+- Use **Multer** for file uploads (PDF/Image).  
+- For SEO tools (plagiarism, meta tags, counters) → basic logic or integrate 3rd party APIs.  
+
+## 🔹 Additional Features
+- Homepage with:
+  - Hero section introducing the site.  
+  - CTA for popular tools.  
+  - SEO-optimized text (100–200 words).  
+- Footer with:
+  - About, Privacy Policy, Terms, Contact links.  
+  - Sitemap link.  
+- Create a JSON-based **sitemap generator** that updates whenever a new tool page is added.  
+- Google Analytics integration.  
+
+## 🔹 Bonus (Optional)
+- Add an **FAQ section** on each tool page for SEO (accordion style).  
+- Add social sharing buttons for results (copy link, share on Twitter/FB).  
+- Make the project **easily extendable** → adding new tools should just mean adding a new React page + Node route.  
+
+Deliver a **complete working project** with `frontend/` and `backend/` folders.  
