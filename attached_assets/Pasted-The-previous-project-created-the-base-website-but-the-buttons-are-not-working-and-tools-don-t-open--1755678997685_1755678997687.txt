@@ -1,0 +1,58 @@
+The previous project created the base website, but the buttons are not working and tools don’t open. 
+
+Please fix this and make the following improvements:
+
+## 🔹 Button Functionality
+- All **buttons and links in the Navbar & Homepage must be clickable**.  
+- Clicking a tool name should route to its **dedicated page** (e.g., `/tools/word-counter`, `/tools/pdf-to-word`).  
+- Use **React Router** for navigation between pages.  
+
+## 🔹 Pages for Each Tool
+Create individual pages for the following tools (with working forms/inputs + placeholders if backend not yet connected):
+
+### Text / File Utilities
+- PDF to Word Converter → File upload + Convert button.  
+- PDF Compressor → File upload + Compress button.  
+- Merge PDFs → Multiple file upload + Merge button.  
+- Word Counter → Textarea input + live word/character count.  
+- Character Counter → Textarea input + live character count.  
+- Remove Background from Image → File upload + "Remove Background" button (placeholder for API).  
+
+### Online Generators & Converters
+- QR Code Generator → Input field + Generate button (shows QR code preview).  
+- Instagram/TikTok/YouTube Thumbnail Downloader → Input URL + Download button.  
+- Currency Converter → Dropdown for currencies + amount input + Convert button.  
+
+### SEO / Content Tools
+- Plagiarism Checker → Textarea input + "Check Plagiarism" button (placeholder for API).  
+- Meta Tag Generator → Input: title/description/keywords → Generate button (shows HTML meta tags).  
+- Title & Description Counter → Textarea input + real-time title/description count.  
+
+## 🔹 Frontend
+- Use **React Router** for page navigation.  
+- Each page should have:
+  - SEO-friendly title + description meta tags.  
+  - Short intro text (100–150 words, SEO optimized).  
+  - A working form with at least placeholder functionality.  
+- Add a **Back to Home** button on all tool pages.  
+
+## 🔹 Backend
+- Connect form buttons to placeholder endpoints in Node.js Express.  
+- Example:
+  - `/api/pdf-to-word` returns `{ "message": "PDF to Word conversion will go here" }`.  
+  - `/api/word-counter` processes input text and returns `{ "words": 123, "characters": 789 }`.  
+- Ensure each tool page calls the backend endpoint so **every button click works**.  
+
+## 🔹 Fixes & Improvements
+- Ensure **light/dark mode toggle works across all pages**.  
+- Buttons must show **loading state + result display area**.  
+- Improve responsiveness: mobile-first layout, collapsible navbar.  
+- Add dummy text to each page for **SEO optimization**.  
+
+## 🔹 Testing
+- After building, test every button:
+  - Uploads should trigger a placeholder response.  
+  - Text counters should update instantly.  
+  - Converters/generators should display results.  
+
+Deliver a **fully working version** where all buttons are clickable, routes work, and pages are complete. 

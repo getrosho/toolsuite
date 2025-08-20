@@ -1,0 +1,27 @@
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://toolsuite.com/api/sitemap
+
+# Disallow admin and api endpoints
+Disallow: /api/
+Disallow: /admin/
+Disallow: /uploads/
+Disallow: /downloads/
+
+# Allow specific tool pages
+Allow: /word-counter
+Allow: /pdf-to-word
+Allow: /pdf-compressor
+Allow: /merge-pdfs
+Allow: /remove-background
+Allow: /qr-generator
+Allow: /thumbnail-downloader
+Allow: /currency-converter
+Allow: /plagiarism-checker
+Allow: /meta-generator
+Allow: /title-counter
+
+# Crawl delay
+Crawl-delay: 1
