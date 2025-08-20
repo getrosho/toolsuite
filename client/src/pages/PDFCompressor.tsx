@@ -32,6 +32,7 @@ export default function PDFCompressor() {
     compressedSize: number;
     compressionRatio: number;
   } | null>(null);
+  const [result, setResult] = useState<{ downloadUrl: string; filename: string } | null>(null);
   const { toast } = useToast();
 
   const formatFileSize = (bytes: number) => {
@@ -101,7 +102,16 @@ export default function PDFCompressor() {
         throw new Error('Compression failed');
       }
       
-      // Handle successful compression
+      const data = await response.json();
+      setResult({
+        downloadUrl: data.downloadUrl,
+        filename: data.filename
+      });
+      setCompressionStats({
+        originalSize: file.size,
+        compressedSize: Math.floor(file.size * data.compressionRatio),
+        compressionRatio: data.compressionRatio
+      });
     } catch (error) {
       console.error('Compression error:', error);
       setIsCompressing(false);
@@ -115,10 +125,20 @@ export default function PDFCompressor() {
   };
 
   const downloadFile = () => {
-    toast({
-      title: 'Download started',
-      description: 'Your compressed PDF is being downloaded.',
-    });
+    if (result?.downloadUrl) {
+      // Create a temporary link element to trigger download
+      const link = document.createElement('a');
+      link.href = result.downloadUrl;
+      link.download = result.filename || 'compressed-document.pdf';
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+      
+      toast({
+        title: 'Download started',
+        description: 'Your compressed PDF is being downloaded.',
+      });
+    }
   };
 
   return (

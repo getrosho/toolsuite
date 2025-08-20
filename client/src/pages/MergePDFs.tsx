@@ -32,6 +32,7 @@ export default function MergePDFs() {
   const [isMerging, setIsMerging] = useState(false);
   const [mergeProgress, setMergeProgress] = useState(0);
   const [mergeComplete, setMergeComplete] = useState(false);
+  const [result, setResult] = useState<{ downloadUrl: string; filename: string } | null>(null);
   const { toast } = useToast();
 
   const handleFileUpload = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -132,7 +133,11 @@ export default function MergePDFs() {
         throw new Error('Merge failed');
       }
       
-      // Handle successful merge
+      const data = await response.json();
+      setResult({
+        downloadUrl: data.downloadUrl,
+        filename: data.filename
+      });
     } catch (error) {
       console.error('Merge error:', error);
       setIsMerging(false);
@@ -146,10 +151,20 @@ export default function MergePDFs() {
   };
 
   const downloadFile = () => {
-    toast({
-      title: 'Download started',
-      description: 'Your merged PDF is being downloaded.',
-    });
+    if (result?.downloadUrl) {
+      // Create a temporary link element to trigger download
+      const link = document.createElement('a');
+      link.href = result.downloadUrl;
+      link.download = result.filename || 'merged-document.pdf';
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+      
+      toast({
+        title: 'Download started',
+        description: 'Your merged PDF is being downloaded.',
+      });
+    }
   };
 
   const formatFileSize = (bytes: number) => {

@@ -27,6 +27,7 @@ export default function PDFConverter() {
   const [isConverting, setIsConverting] = useState(false);
   const [conversionProgress, setConversionProgress] = useState(0);
   const [conversionComplete, setConversionComplete] = useState(false);
+  const [result, setResult] = useState<{ downloadUrl: string; filename: string } | null>(null);
   const { toast } = useToast();
 
   const handleFileUpload = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -82,7 +83,11 @@ export default function PDFConverter() {
         throw new Error('Conversion failed');
       }
       
-      // Handle successful conversion
+      const data = await response.json();
+      setResult({
+        downloadUrl: data.downloadUrl,
+        filename: data.filename
+      });
     } catch (error) {
       console.error('Conversion error:', error);
       setIsConverting(false);
@@ -95,11 +100,20 @@ export default function PDFConverter() {
   };
 
   const downloadFile = () => {
-    // In a real implementation, this would download the converted file
-    toast({
-      title: 'Download started',
-      description: 'Your converted Word document is being downloaded.',
-    });
+    if (result?.downloadUrl) {
+      // Create a temporary link element to trigger download
+      const link = document.createElement('a');
+      link.href = result.downloadUrl;
+      link.download = result.filename || 'converted-document.docx';
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+      
+      toast({
+        title: 'Download started',
+        description: 'Your converted Word document is being downloaded.',
+      });
+    }
   };
 
   return (
