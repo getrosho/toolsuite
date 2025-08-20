@@ -5,6 +5,7 @@ import { Toaster } from "@/components/ui/toaster";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { ThemeProvider } from "@/components/ThemeProvider";
 import { Layout } from "@/components/Layout";
+import ScrollToTop from "@/components/ScrollToTop";
 import { useAnalytics } from "@/hooks/use-analytics";
 import { useEffect } from "react";
 import { initGA } from "@/lib/analytics";
@@ -32,35 +33,38 @@ function Router() {
   useAnalytics();
   
   return (
-    <Switch>
-      <Route path="/" component={Home} />
-      
-      {/* Text & File Tools */}
-      <Route path="/word-counter" component={WordCounter} />
-      <Route path="/pdf-to-word" component={PDFConverter} />
-      <Route path="/pdf-compressor" component={PDFCompressor} />
-      <Route path="/merge-pdfs" component={MergePDFs} />
-      <Route path="/remove-background" component={RemoveBackground} />
-      
-      {/* Generators */}
-      <Route path="/qr-generator" component={QRGenerator} />
-      <Route path="/thumbnail-downloader" component={ThumbnailDownloader} />
-      <Route path="/currency-converter" component={CurrencyConverter} />
-      
-      {/* SEO Tools */}
-      <Route path="/plagiarism-checker" component={PlagiarismChecker} />
-      <Route path="/meta-generator" component={MetaGenerator} />
-      <Route path="/title-counter" component={TitleCounter} />
-      
-      {/* Company Pages */}
-      <Route path="/about" component={About} />
-      <Route path="/privacy" component={Privacy} />
-      <Route path="/terms" component={Terms} />
-      <Route path="/contact" component={Contact} />
-      
-      {/* Fallback to 404 */}
-      <Route component={NotFound} />
-    </Switch>
+    <>
+      <ScrollToTop />
+      <Switch>
+        <Route path="/" component={Home} />
+        
+        {/* Text & File Tools */}
+        <Route path="/word-counter" component={WordCounter} />
+        <Route path="/pdf-to-word" component={PDFConverter} />
+        <Route path="/pdf-compressor" component={PDFCompressor} />
+        <Route path="/merge-pdfs" component={MergePDFs} />
+        <Route path="/remove-background" component={RemoveBackground} />
+        
+        {/* Generators */}
+        <Route path="/qr-generator" component={QRGenerator} />
+        <Route path="/thumbnail-downloader" component={ThumbnailDownloader} />
+        <Route path="/currency-converter" component={CurrencyConverter} />
+        
+        {/* SEO Tools */}
+        <Route path="/plagiarism-checker" component={PlagiarismChecker} />
+        <Route path="/meta-generator" component={MetaGenerator} />
+        <Route path="/title-counter" component={TitleCounter} />
+        
+        {/* Company Pages */}
+        <Route path="/about" component={About} />
+        <Route path="/privacy" component={Privacy} />
+        <Route path="/terms" component={Terms} />
+        <Route path="/contact" component={Contact} />
+        
+        {/* Fallback to 404 */}
+        <Route component={NotFound} />
+      </Switch>
+    </>
   );
 }
 

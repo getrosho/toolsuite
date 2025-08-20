@@ -2,7 +2,19 @@
 
 ## Overview
 
-ToolSuite is a comprehensive web application offering free online tools for productivity, including PDF conversion, text analysis, QR code generation, image processing, and SEO utilities. The platform provides instant access to professional-grade tools without registration requirements, focusing on speed, security, and user experience.
+ToolSuite is a comprehensive web application offering free online tools for productivity, including PDF conversion, text analysis, QR code generation, image processing, currency conversion, and SEO utilities. The platform provides instant access to professional-grade tools without registration requirements, focusing on speed, security, and user experience.
+
+## Recent Changes (January 2025)
+
+### Currency Converter Enhancements
+- **Expanded Currency Support**: Added support for 8 major currencies including PKR (Pakistani Rupee), INR (Indian Rupee), AED (UAE Dirham)
+- **Real-time Exchange Rates**: Integrated with exchangerate.host free API for live exchange rate data
+- **Improved UX**: Set USD→PKR as default conversion pair, updated popular currency pairs
+- **Enhanced Dropdowns**: Better currency selection with symbols and full names
+
+### Navigation Improvements
+- **Scroll-to-Top Fix**: Added ScrollToTop component to automatically scroll to page top on route changes
+- **Better UX**: Resolves issue where users remained at bottom of page when clicking footer links
 
 ## User Preferences
 

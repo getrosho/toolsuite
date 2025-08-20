@@ -25,19 +25,19 @@ const faqs = [
 
 const popularCurrencies = [
   { code: 'USD', name: 'US Dollar', symbol: '$' },
+  { code: 'PKR', name: 'Pakistani Rupee', symbol: '₨' },
+  { code: 'INR', name: 'Indian Rupee', symbol: '₹' },
   { code: 'EUR', name: 'Euro', symbol: '€' },
   { code: 'GBP', name: 'British Pound', symbol: '£' },
-  { code: 'JPY', name: 'Japanese Yen', symbol: '¥' },
-  { code: 'CAD', name: 'Canadian Dollar', symbol: 'C$' },
+  { code: 'AED', name: 'UAE Dirham', symbol: 'د.إ' },
   { code: 'AUD', name: 'Australian Dollar', symbol: 'A$' },
-  { code: 'CHF', name: 'Swiss Franc', symbol: 'Fr' },
-  { code: 'CNY', name: 'Chinese Yuan', symbol: '¥' },
+  { code: 'CAD', name: 'Canadian Dollar', symbol: 'C$' },
 ];
 
 export default function CurrencyConverter() {
   const [amount, setAmount] = useState('1');
   const [fromCurrency, setFromCurrency] = useState('USD');
-  const [toCurrency, setToCurrency] = useState('EUR');
+  const [toCurrency, setToCurrency] = useState('PKR');
   const [convertedAmount, setConvertedAmount] = useState<number | null>(null);
   const [exchangeRate, setExchangeRate] = useState<number | null>(null);
   const [lastUpdated, setLastUpdated] = useState<string>('');
@@ -271,14 +271,14 @@ export default function CurrencyConverter() {
             <h3 className="text-xl font-semibold text-foreground mb-6 text-center">Popular Currency Pairs</h3>
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
               {[
+                'USD → PKR',
+                'USD → INR',
                 'USD → EUR',
                 'GBP → USD',
-                'EUR → JPY',
+                'EUR → PKR',
+                'AED → PKR',
                 'CAD → USD',
-                'AUD → USD',
-                'USD → CHF',
-                'EUR → GBP',
-                'USD → CNY'
+                'AUD → USD'
               ].map((pair) => (
                 <div key={pair} className="bg-card p-3 rounded-lg border border-border text-center">
                   <div className="text-sm font-medium text-card-foreground">{pair}</div>
