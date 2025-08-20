@@ -6,9 +6,22 @@ ToolSuite is a comprehensive web application offering free online tools for prod
 
 ## Recent Changes (January 2025)
 
+### Scientific Calculator Tool (NEW)
+- **Advanced Mathematical Calculator**: Comprehensive tool supporting derivatives, integrals, limits, and algebraic operations
+- **Python SymPy Integration**: Backend Python microservice using SymPy library for 100% accurate symbolic mathematics
+- **Step-by-Step Solutions**: Detailed explanations for every calculation with proper mathematical notation
+- **Interactive UI**: Modern interface with function buttons, history panel, and real-time calculation results
+- **Multiple Operations**: Supports evaluation, differentiation, integration, limits, solving, simplification, expansion, and factoring
+- **Calculus Features**: First, second derivatives, definite/indefinite integrals, limit calculations with proper mathematical rigor
+
+### File Download System Enhancement
+- **Fixed Download Routes**: Added proper `/downloads/:filename` endpoint for processed PDF and Word files
+- **File Streaming**: Implemented secure file streaming with appropriate MIME types and download headers
+- **Error Handling**: Comprehensive error handling for missing files and network issues
+
 ### Currency Converter Enhancements
-- **Expanded Currency Support**: Added support for 8 major currencies including PKR (Pakistani Rupee), INR (Indian Rupee), AED (UAE Dirham)
-- **Real-time Exchange Rates**: Integrated with exchangerate.host free API for live exchange rate data
+- **Expanded Currency Support**: Added support for 8 major currencies including PKR (Pakistani Rupee), INR (Indian Rupie), AED (UAE Dirham)
+- **Real-time Exchange Rates**: Integrated with multiple free APIs for live exchange rate data with fallback system
 - **Improved UX**: Set USD→PKR as default conversion pair, updated popular currency pairs
 - **Enhanced Dropdowns**: Better currency selection with symbols and full names
 

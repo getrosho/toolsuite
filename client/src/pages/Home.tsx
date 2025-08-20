@@ -143,6 +143,22 @@ export default function Home() {
                   </a>
                 </Link>
               </div>
+
+              <div className="tool-card bg-card p-6 rounded-xl border border-border shadow-sm hover:shadow-lg">
+                <div className="flex items-center mb-3">
+                  <i className="fas fa-calculator text-blue-500 text-xl mr-3"></i>
+                  <h4 className="font-semibold text-card-foreground">Scientific Calculator</h4>
+                  <span className="ml-2 bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 text-xs px-2 py-1 rounded-full">NEW</span>
+                </div>
+                <p className="text-muted-foreground text-sm mb-4">
+                  Advanced calculator with derivatives, integrals, limits and step-by-step solutions.
+                </p>
+                <Link href="/scientific-calculator">
+                  <a className="inline-flex items-center text-primary font-medium text-sm hover:opacity-80">
+                    Try now <i className="fas fa-arrow-right ml-1 text-xs"></i>
+                  </a>
+                </Link>
+              </div>
             </div>
 
             {/* SEO Tools */}

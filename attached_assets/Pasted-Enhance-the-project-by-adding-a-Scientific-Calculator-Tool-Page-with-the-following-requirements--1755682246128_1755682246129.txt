@@ -1,0 +1,61 @@
+Enhance the project by adding a **Scientific Calculator Tool Page** with the following requirements:
+
+## 🔹 Scientific Calculator Features
+1. Create a new page `/tools/scientific-calculator`.  
+2. The calculator must support:
+   - Basic operations: +, −, ×, ÷, %, power, square root.  
+   - Trigonometric functions: sin, cos, tan, arcsin, arccos, arctan.  
+   - Logarithmic functions: log base 10, natural log (ln).  
+   - Advanced: factorial, combinations (nCr), permutations (nPr).  
+   - Calculus: 
+     - Derivatives (e.g., `d/dx x^2`)  
+     - Integrals (e.g., `∫ x^2 dx`)  
+     - Limits (e.g., `lim x→0 sin(x)/x`)  
+     - Differential equations (optional).  
+
+3. Input box should allow **typing full math expressions** (e.g., `integrate(x^2, x)`, `derivative(sin(x), x)`).  
+
+4. Show **step-by-step accurate solutions**:
+   - Use a backend library like **Sympy (Python)** or connect to **WolframAlpha API** for guaranteed correctness.  
+   - For example:  
+     - Input: `derivative(x^2, x)` → Output: `2x`.  
+     - Input: `integrate(sin(x), x)` → Output: `-cos(x) + C`.  
+   - Each step should be displayed in a results area.  
+
+## 🔹 Frontend
+- Create a modern UI with:
+  - Input field for the expression.  
+  - Buttons for common operations (sin, cos, log, ^, √, d/dx, ∫).  
+  - A **history panel** showing past calculations.  
+  - Results displayed with **step-by-step explanations** (clear typography, MathJax/KaTeX rendering).  
+
+## 🔹 Backend
+- Use **Node.js** backend with a Python microservice for accurate math:
+  - Node receives user input.  
+  - Passes to Python (Sympy) for evaluation.  
+  - Returns the exact result + step-by-step solution.  
+- Example endpoint:
+  - `POST /api/scientific-calculator` → Input: `{ "expression": "integrate(x^2, x)" }` → Output: `{ "result": "x^3/3 + C", "steps": [...] }`.  
+
+## 🔹 Accuracy
+- Ensure **100% accuracy** for derivatives, integrals, limits, and algebra.  
+- No approximations unless user asks for decimal results.  
+- Follow proper math notation conventions.  
+
+## 🔹 SEO + Content
+- Add an SEO-friendly intro on the page:  
+  *“Our free online scientific calculator solves equations, derivatives, and integrals instantly with step-by-step accurate solutions. Perfect for students, engineers, and professionals.”*  
+- Include FAQs at the bottom:
+  - “How do I calculate derivatives online?”  
+  - “Can this calculator solve integrals step by step?”  
+  - “Is this calculator as accurate as WolframAlpha?”  
+
+## 🔹 Testing
+- Test with:
+  - `derivative(x^2, x)` → `2x`.  
+  - `integrate(x^2, x)` → `x^3/3 + C`.  
+  - `log(100)` → `2`.  
+  - `lim x→0 sin(x)/x` → `1`.  
+- Verify every result is mathematically correct.  
+
+Deliver a **fully working Scientific Calculator tool page** that is accurate, interactive, and SEO optimized.

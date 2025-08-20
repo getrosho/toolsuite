@@ -296,6 +296,39 @@ export async function registerRoutes(app: Express): Promise<Server> {
     }
   });
 
+  // Scientific Calculator
+  app.post("/api/scientific-calculator", async (req, res) => {
+    try {
+      const { expression, operation, variable } = req.body;
+      
+      if (!expression) {
+        return res.status(400).json({ 
+          success: false,
+          error: 'Expression is required' 
+        });
+      }
+
+      const mathService = require('./services/mathService').mathService;
+      const result = await mathService.calculate({
+        expression,
+        operation: operation || 'evaluate',
+        variable: variable || 'x'
+      });
+
+      await storage.incrementToolUsage('scientific-calculator');
+      
+      res.json(result);
+    } catch (error: any) {
+      console.error('Scientific calculator error:', error);
+      res.status(500).json({ 
+        success: false,
+        error: 'Calculation service error',
+        result: 'Error',
+        steps: ['Internal server error. Please try again.']
+      });
+    }
+  });
+
   // Tool usage statistics
   app.get("/api/tools/stats", async (req, res) => {
     try {
@@ -365,12 +398,12 @@ export async function registerRoutes(app: Express): Promise<Server> {
       const fileStream = fs.createReadStream(filePath);
       fileStream.pipe(res);
       
-      fileStream.on('error', (error) => {
+      fileStream.on('error', (error: Error) => {
         console.error('File stream error:', error);
         res.status(404).json({ error: 'File not found' });
       });
       
-    } catch (error) {
+    } catch (error: any) {
       console.error('Download error:', error);
       res.status(500).json({ error: 'Download failed' });
     }

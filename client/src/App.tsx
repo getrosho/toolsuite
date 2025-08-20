@@ -27,6 +27,7 @@ import About from "@/pages/About";
 import Privacy from "@/pages/Privacy";
 import Terms from "@/pages/Terms";
 import Contact from "@/pages/Contact";
+import ScientificCalculator from "@/pages/ScientificCalculator";
 import NotFound from "@/pages/not-found";
 
 function Router() {
@@ -49,6 +50,7 @@ function Router() {
         <Route path="/qr-generator" component={QRGenerator} />
         <Route path="/thumbnail-downloader" component={ThumbnailDownloader} />
         <Route path="/currency-converter" component={CurrencyConverter} />
+        <Route path="/scientific-calculator" component={ScientificCalculator} />
         
         {/* SEO Tools */}
         <Route path="/plagiarism-checker" component={PlagiarismChecker} />
